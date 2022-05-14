@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7350339761209602435}
   - component: {fileID: 7350339761209602432}
-  - component: {fileID: 7350339761209602433}
+  - component: {fileID: 6282113751578409520}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7350339761209602433
+--- !u!114 &6282113751578409520
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,8 +94,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7350339761209602434}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41d93335fe1df9e45a7e44baa9d36864, type: 3}
+  m_Script: {fileID: 11500000, guid: d897279e275a41046a81e100bbbd7040, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulet:
+  bullet:
   - {fileID: 420687130102058740, guid: fa89c896688c0b6459465ea16495c2c6, type: 3}

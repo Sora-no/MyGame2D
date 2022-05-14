@@ -4,25 +4,24 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-    static private int bullets = 0;
+    static protected int bullets = 0;
     static public int Bullets{get{return bullets;}}
-    static private int bulletsInPack = 0;
+    protected int maxBulletsInMag;
+    static protected int bulletsInPack = 0;
     static public int BulletsInPack{get{return bulletsInPack;}}
-    private Vector3 posSpawnBulet;
-    private bool inTriggerAmmoShop;
+    protected Vector3 posSpawnBulet;
+    protected bool inTriggerAmmoShop;
     //private Vector3 gunPos;
     [SerializeField]
-    private GameObject[] bullet;
-    private SpriteRenderer sr;
-    private AudioSource gunBoom;
+    protected GameObject[] bullet;
+    protected SpriteRenderer sr;
+    protected AudioSource gunBoom;
     
-    // Start is called before the first frame update
     void Start(){
         sr = GetComponent<SpriteRenderer>();
         gunBoom = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
     void Update(){
         posSpawnBulet = transform.position + new Vector3(0, 0.12f, 0);
         Fire();
@@ -60,18 +59,18 @@ public class Gun : MonoBehaviour
         if(inTriggerAmmoShop && bulletsInPack < 300 && Input.GetKeyDown(KeyCode.E))
             bulletsInPack = 100;
     }
-    public void Reload(){
+    public virtual void Reload(){
         if(Input.GetKeyDown(KeyCode.R) && bullets != 0 && bulletsInPack > 0){
-            bulletsInPack -= 6 - bullets;
-            bullets += 6 - bullets;
+            bulletsInPack -= maxBulletsInMag - bullets;
+            bullets += maxBulletsInMag - bullets;
             
         }
         else if(Input.GetKeyDown(KeyCode.R) && bullets == 0 && bulletsInPack > 0){
-            bulletsInPack -= 6;
-            bullets +=6;
+            bulletsInPack -= maxBulletsInMag;
+            bullets +=maxBulletsInMag;
             
         }
-        else if(Input.GetKeyDown(KeyCode.R) && bulletsInPack <= 6 && bullets == 0){
+        else if(Input.GetKeyDown(KeyCode.R) && bulletsInPack <= maxBulletsInMag && bullets == 0){
             bulletsInPack -= bulletsInPack;
             bullets += bulletsInPack;
             
